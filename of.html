@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #000;
+        }
+        
+        .box {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .online {
+            background-color: pink;
+            animation: 'online 1.5s ease-in-out infinite';
+        }
+        
+        .offline {
+            background-color: red;
+            animation: 'online 1.5s ease-in-out infinite';
+        }
+        
+        @keyframes online {
+            0% {
+                box-shadow: 0 0 300px pink;
+            }
+            50% {
+                box-shadow: 0 0 400px pink;
+            }
+            100% {
+                box-shadow: 0 0 300px pink;
+            }
+        }
+        
+        @keyframes offline {
+            0% {
+                box-shadow: 0 0 300px red;
+            }
+            50% {
+                box-shadow: 0 0 400px red;
+            }
+            100% {
+                box-shadow: 0 0 300px red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box online"></div>
+    <script>
+        var box = document.querySelector('.box');
+        window.addEventListener('online', function() {
+            box.classList.add('online');
+            box.classList.remove('offline');
+        })
+        window.addEventListener('offline', function() {
+            box.classList.add('offline');
+            box.classList.remove('online');
+        })
+    </script>
+</body>
+
+</html>

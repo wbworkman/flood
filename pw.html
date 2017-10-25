@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>red</button>
+    <button>purple</button>
+    <script>
+        var btnArr = document.querySelectorAll('button');
+        btnArr[0].onclick = function() {
+            window.localStorage.setItem('color', 'red');
+            document.body.style.backgroundColor = 'red';
+        }
+        btnArr[1].onclick = function() {
+            document.body.style.backgroundColor = 'purple';
+            window.localStorage.setItem('color', 'purple');
+        }
+        window.onload = function() {
+            document.body.style.backgroundColor = window.localStorage.getItem('color');
+        }
+    </script>
+</body>
+
+</html>
